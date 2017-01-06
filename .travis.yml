@@ -15,7 +15,7 @@ before_install:
 script:
   - go test -v ./...
   # Run tests for code coverage as well
-  - ./test.sh
+  - ./codecov_testing.sh
 
 after_success:
   # Send coverage to codecov
