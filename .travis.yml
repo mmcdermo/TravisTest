@@ -1,0 +1,23 @@
+language: go
+
+go:
+  - 1.x
+  - 1.6		
+  - 1.7.x
+  - master
+
+before_install:
+  - go get github.com/modocache/gover
+  - go get github.com/gorilla/mux
+  - go get github.com/gorilla/handlers
+  
+  
+script:
+  - go test -v ./...
+  - go list -f '{{if len .TestGoFiles}}"go test -coverprofile={{.Dir}}/.coverprofile {{.ImportPath}}"{{end}}' ./... | xargs -i sh -c {}
+  # Merge coverage reports
+  - gover . coverprofile.txt
+
+after_success:
+  # Send coverage reports to Codecov
+  - bash < (curl -s https://codecov.io/bash) -f coverprofile.txt
