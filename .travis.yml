@@ -19,4 +19,4 @@ script:
 
 after_success:
   # Send coverage to codecov
-  - bash < (curl -s https://codecov.io/bash) -f coverage.txt -t 0972d333-b670-4020-8e3b-45a440dcb759
+  - bash <(curl -s https://codecov.io/bash) -f coverage.txt -t 0972d333-b670-4020-8e3b-45a440dcb759
