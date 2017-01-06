@@ -1,22 +1,18 @@
 language: go
-
 go:
-  - 1.x
-  - 1.6		
-  - 1.7.x
-  - master
-
+- master
 before_install:
-  - go get github.com/modocache/gover
-  - go get github.com/gorilla/mux
-  - go get github.com/gorilla/handlers
-  
-  
+- go get github.com/modocache/gover
+- go get github.com/gorilla/mux
+- go get github.com/gorilla/handlers
 script:
-  - go test -v ./...
-  # Run tests for code coverage as well
-  - ./codecov_testing.sh
-
+- go test -v ./...
+- "./codecov_testing.sh"
 after_success:
-  # Send coverage to codecov
-  - bash <(curl -s https://codecov.io/bash) -f coverage.txt -t 0972d333-b670-4020-8e3b-45a440dcb759
+- bash <(curl -s https://codecov.io/bash) -f coverage.txt -t 0972d333-b670-4020-8e3b-45a440dcb759
+- "./amazon_ecs.sh"
+env:
+  global:
+  - secure: fbGNf0RyfbRYaHMMJf/PbkiPD1YaiB6UpKsn21CU+VrRr+5HGlNeX/uGSoKruZJDZdkXKJSi6lAZMyIXM4agpHR7ZGS5YnEHEWfigoyTm7//xtwpxz4Ihh5VN5QRpnwW6hMGw2JkU94fo1CCUYz8+uiKm7xsx3k55NfGL21vsWLR0e6c/mWMBoRvnBBBeKLeGy/4yF27TRHYbBFCVRJSWkPV5wmSuKVvDZ5FkRp8N02XITOehnd/DqktyRE355VorUG4m5ID3bGRKnpuFCobeJ4NSfX4iBW7aAm+nJmCZqempx3eJUiUsumGcdZbEIRfSKJp9M68Qvhb2deN+aPJ9XK3B3IovPfzfA4gYS2SGp1TJY0UIFovC0cX342RE2zhgOJayJbvkKHRiVi5YMjdWrUq6WgqTlE8TC/ZXoKNHUjv8/r00ZqQTheT0pGe6xs+qTTyksNcn04h4YOqan0XZfI9QsdyRClpRfJ44hZMZIPQuEZmljPOCZddoW1if15r14ZoncKpil/jV26NNhqLqRH42jG2RwcxQxbnOGVce7DzXqwr8BLvV8qfVVVwPf8TrQ7CUh+lmV6Ez1bLHQvrIyWHAm3MMuZsiltFskQNOG0BXguwkYEcz6g+0+Snqxyjc0Gs3vN6HVPRrBMWRTHWy7AEFSZAfvV+Mli5+AYJmv4=
+  - secure: KoApPzpPvCsxWYaUQZ0d86cn+oP5Y6aQxKtGiaDESMVhet8LgdNTGIA9e/dcM2omLhLuaPH9JRrUmql4RJKj0SFSem7FS38JsYzEWbfXQeA+gAnPAYpsbQ84zcR7ABsWGTwMuCH+gqHzelQT1Me+BsUoMYkWMPrSL/Leiny9SZwSa+zeBwRJn9hdWvVJCtmw7YXN7Hq9GI3iTcNt/WGJk1DB3yEJiIWz2IgA/ftnOK/kXWTYmYFahvVqgPVn0zMRx5Vx73COk7uICaZPDuh4oY1qfrseV7wv0D03rslQidglwW4rkMo//HDw8H9AHp/sopOB+2TarCM4tMHb1gl1/Ybr4peIRWIxccrlCzaaZ/6BAgtan/Wbdy1Zt8ZaPpt0UWX3RHGw1cgeC9f1KIMb1ffFVS3OkIkOZAIRTWucLRN49uNYafpM/axrkoZmY+GvV5fnlvrkhn8sy+F58JF2JrYagXMMvbewXe+LLZ5oUqS0PbztkkYdrspqokQUEjZOaViy+8geuW2+X1ILquISpIwmbjDG67U0612Ad/yosjnB2+7A+X5DhEMXOBtQquxaQZ41GEdDCc4JG830YnrmFM6suVcQAlMfVCpqX0T6vn24krNGY2+YwbDsIz6pcg0At4PNMYbXYjgysFDX1SDi758HgaCYHTx4kf34EpUE5rQ=
+  - secure: PiXZixFM/DkXxJq4qQ2AnfIj4rLwUH3SiXoJMqxTubtfkpT6Syk29paAo9946+gkVNYU8gMtn2ZWA1otqq1woAaXT8ucS3UGH3p3SaVaOWC5jcSn2+be4a0/vNTahY0iACw8we62tsNJ2i6mqw13axYSALCNaJ/JDxeLjiBlLbh5goaTE0N4vc1AuCQHO4e/WY8QvP+oFk0mHQKhM95u0qb3lneG2Se4vDeaYFCdN22L+Gjl6CHrKy4qGtFir8LTOu7gdpBXC4KDrOLgVHtJixb0j4sXGPEszz8a/sUavTiOV6MP+jXa9bRR1lR9vyM87XJZ9DwEnJ//OIfg0Lgbew9yy1bt2RWVm7McLwOV+t2KgNZzo/IRiX0usRfm4CWs6QBsSxcmSArpJ9HKa5PHzLw1ox0zW2MRfiwkAX91je+p11MH7k/AUVl5HDaJofBZ3+hkIEutmUZILyrltgFFgFEyfN7nYfPGzYvbp3IVNSAJKLHcizAOiyWYwzt8JjhF5xS5jM5/BXcaAMcNnyy8VHSwMnLV+EXigmaDLBwjwfgUVUiZE9f45a0teUKF97e0/AYjZb/adSpn7GmerX9+ukS4TxBp3CnTWQ7NJnTj3YPjn8zUB+3FYB2J6H2SVCTjoG4kl7B6QRJbKzXDXTDAehURFZRIOuTse37TevHEOks=
