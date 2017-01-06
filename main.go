@@ -23,6 +23,6 @@ func RunHTTPServer(port string) error{
 }
 
 func main(){
-	err := RunHTTPServer("8080")
+	err := RunHTTPServer("80")
 	log.Println(err)
 }
