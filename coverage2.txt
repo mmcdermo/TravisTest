@@ -1,0 +1,2 @@
+mode: atomic
+github.com/mmcdermo/TravisTest/testpack/lib.go:6.26,8.2 1 1
