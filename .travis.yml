@@ -14,10 +14,9 @@ before_install:
   
 script:
   - go test -v ./...
-  - go list -f '{{if len .TestGoFiles}}"go test -coverprofile={{.Dir}}/.coverprofile {{.ImportPath}}"{{end}}' ./... | xargs -i sh -c {}
-  # Merge coverage reports
-  - gover . coverprofile.txt
+  # Run tests for code coverage as well
+  - ./test.sh
 
 after_success:
-  # Send coverage reports to Codecov
-  - bash < (curl -s https://codecov.io/bash) -f coverprofile.txt
+  # Send coverage to codecov
+  - bash < (curl -s https://codecov.io/bash) -f coverage.txt -t 0972d333-b670-4020-8e3b-45a440dcb759
