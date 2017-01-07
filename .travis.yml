@@ -5,6 +5,8 @@ before_install:
 - go get github.com/modocache/gover
 - go get github.com/gorilla/mux
 - go get github.com/gorilla/handlers
+- pip install --user awscli
+- export PATH=$PATH:$HOME/.local/bin
 script:
 - go test -v ./...
 - "./codecov_testing.sh"
