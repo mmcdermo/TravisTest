@@ -14,7 +14,7 @@ after_success:
 - bash <(curl -s https://codecov.io/bash) -f coverage.txt -t 0972d333-b670-4020-8e3b-45a440dcb759
 deploy:
   provider: script
-  script: amazon_ecs.sh
+  script: chmod +x amazon_ecs.sh && sh amazon_ecs.sh
   on:
     branch: master
 env:
