@@ -9,7 +9,7 @@ import (
 )
 
 func IndexHandler(w http.ResponseWriter, r *http.Request){
-	z := "<HTML><HEAD><TITLE>INDEX</TITLE></HEAD><BODY>Hello, world v99!</BODY></HTML>"
+	z := "<HTML><HEAD><TITLE>INDEX</TITLE></HEAD><BODY>Hello, world v90!</BODY></HTML>"
 	fmt.Fprintf(w, "%s", z)
 }
 
