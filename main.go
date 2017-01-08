@@ -16,6 +16,7 @@ func IndexHandler(w http.ResponseWriter, r *http.Request){
 func RunHTTPServer(port string) error{
 	r := mux.NewRouter()
 	r.HandleFunc("/index.html", IndexHandler)
+	r.HandleFunc("/index2.html", IndexHandler)
 	http.Handle("/", r)
 	log.Println("Running HTTP Server on port " + port)
 	err := http.ListenAndServe(":"+port, r)
