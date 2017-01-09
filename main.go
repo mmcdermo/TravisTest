@@ -9,12 +9,12 @@ import (
 )
 
 func IndexHandler(w http.ResponseWriter, r *http.Request){
-	z := "<HTML><HEAD><TITLE>INDEX</TITLE></HEAD><BODY>Hello, World. I have been reborn yet again!</BODY></HTML>"
+	z := "<HTML><HEAD><TITLE>INDEX</TITLE></HEAD><BODY>Hello, World. I have been reborn yet again! Again again again!</BODY></HTML>"
 	fmt.Fprintf(w, "%s", z)
 }
 
 func RootHandler(w http.ResponseWriter, r *http.Request){
-	z := "<HTML><HEAD><TITLE>INDEX</TITLE></HEAD><BODY>Root Groot!</BODY></HTML>"
+	z := "<HTML><HEAD><TITLE>INDEX</TITLE></HEAD><BODY>Root Groot 2!</BODY></HTML>"
 	fmt.Fprintf(w, "%s", z)
 }
 
